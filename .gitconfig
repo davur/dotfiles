@@ -1,0 +1,11 @@
+[user]
+	name = dsclementsen
+	email = davur@davur.net
+[color]
+	ui = true
+[core]
+	excludesfile = /Users/davurclementsen/.gitignore_global
+[alias]
+	unstage = reset HEAD --
+[credential]
+	helper = osxkeychain
