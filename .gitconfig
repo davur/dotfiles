@@ -7,5 +7,7 @@
 	excludesfile = /Users/davurclementsen/.gitignore_global
 [alias]
 	unstage = reset HEAD --
+[push]
+	default = simple
 [credential]
 	helper = osxkeychain
