@@ -17,6 +17,8 @@ export HISTSIZE=5000
 ################################# Prompt ###################################### 
 
 # terminal settings (Cygwin inspired prompt)
+#   davur@macbook [~/Projects/dotfiles]
+#   10:14:23 $ | 
 PS1="\[\e]0;\w\a\]\n\[\e[36m\]\u@\h [\[\e[37m\]\w\[\e[36m\]]\[\e[0m\]\n\t \$ "
 
 
