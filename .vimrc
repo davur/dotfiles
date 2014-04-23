@@ -146,7 +146,7 @@ set shell=/bin/bash
 set guioptions-=T
 set background=dark
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
-colorscheme murphy
+colorscheme torte
 set gfn=Liberation\ Mono\ 10 
 
 set encoding=utf8

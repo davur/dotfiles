@@ -73,7 +73,7 @@ alias emaillogclear='echo "" > /private/log/mail_php.log'
 ############################### Tool settings #################################
 
 # export PATH="~/bin:/Applications/MAMP/bin/php5.2/bin:/Applications/MAMP/Library/bin:/usr/local/bin:$PATH:/Users/davurclementsen/Downloads/android-sdk-macosx/tools:/Users/davurclementsen/bin/play-2.1.1"
-export PATH="/usr/local/bin:$HOME/bin:$HOME/bin/play-2.2.1:/Applications/MAMP/Library/bin:$PATH"
+export PATH="/usr/local/bin:$HOME/bin:$HOME/Tools/Frameworks/play-2.2.0:/Applications/MAMP/Library/bin:$PATH"
 
 # export PYTHONPATH="/Users/davurclementsen/django/django-trunk/:/Library/Python/2.7/site-packages/:$PYTHONPATH"
 
