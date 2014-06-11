@@ -68,12 +68,16 @@ alias phplogclear='echo "" > /Applications/MAMP/logs/php_error.log'
 alias emaillog='tail -f /private/log/mail_php.log'
 alias emaillogclear='echo "" > /private/log/mail_php.log'
 
+# postgres
+alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 
 
 ############################### Tool settings #################################
 
 # export PATH="~/bin:/Applications/MAMP/bin/php5.2/bin:/Applications/MAMP/Library/bin:/usr/local/bin:$PATH:/Users/davurclementsen/Downloads/android-sdk-macosx/tools:/Users/davurclementsen/bin/play-2.1.1"
-export PATH="/usr/local/bin:$HOME/bin:$HOME/Tools/Frameworks/play-2.2.0:/Applications/MAMP/Library/bin:$PATH"
+# export PATH="/usr/local/bin:$HOME/bin:$HOME/Tools/Frameworks/play-2.2.1:/Applications/MAMP/Library/bin:$PATH"
+export PATH="/usr/local/bin:$HOME/bin:$HOME/Tools/Frameworks/play-2.2.1:$PATH"
 
 # export PYTHONPATH="/Users/davurclementsen/django/django-trunk/:/Library/Python/2.7/site-packages/:$PYTHONPATH"
 
@@ -81,3 +85,8 @@ export WORKON_HOME=$HOME/.virtualenvs
 
 source /usr/local/bin/virtualenvwrapper.sh
 
+
+
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
