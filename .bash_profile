@@ -18,7 +18,7 @@ export HISTSIZE=5000
 
 # terminal settings (Cygwin inspired prompt)
 #   davur@macbook [~/Projects/dotfiles]
-#   10:14:23 $ | 
+#   10:14:23 $ |
 PS1="\[\e]0;\w\a\]\n\[\e[36m\]\u@\h [\[\e[37m\]\w\[\e[36m\]]\[\e[0m\]\n\t \$ "
 
 
@@ -68,16 +68,19 @@ alias phplogclear='echo "" > /Applications/MAMP/logs/php_error.log'
 alias emaillog='tail -f /private/log/mail_php.log'
 alias emaillogclear='echo "" > /private/log/mail_php.log'
 
-# postgres
-alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+# Django
+alias makemigrations='echo "python manage.py makemigrations"; python manage.py makemigrations'
+alias migrate='echo "python manage.py migrate"; python manage.py migrate'
+alias runserver='echo "python manage.py runserver"; python manage.py runserver'
+
 
 
 ############################### Tool settings #################################
 
 # export PATH="~/bin:/Applications/MAMP/bin/php5.2/bin:/Applications/MAMP/Library/bin:/usr/local/bin:$PATH:/Users/davurclementsen/Downloads/android-sdk-macosx/tools:/Users/davurclementsen/bin/play-2.1.1"
-# export PATH="/usr/local/bin:$HOME/bin:$HOME/Tools/Frameworks/play-2.2.1:/Applications/MAMP/Library/bin:$PATH"
-export PATH="/usr/local/bin:$HOME/bin:$HOME/Tools/Frameworks/play-2.2.1:$PATH"
+export PATH="/Library/PostgreSQL/9.0/bin:/usr/local/bin:$HOME/bin:$HOME/bin/play-2.2.1:$PATH"
+
+export PATH="$HOME/Frameworks/activator-1.2.12-minimal:$PATH"
 
 # export PYTHONPATH="/Users/davurclementsen/django/django-trunk/:/Library/Python/2.7/site-packages/:$PYTHONPATH"
 
@@ -85,8 +88,6 @@ export WORKON_HOME=$HOME/.virtualenvs
 
 source /usr/local/bin/virtualenvwrapper.sh
 
-
-
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/davurclementsen/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
