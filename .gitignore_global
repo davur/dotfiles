@@ -5,4 +5,5 @@
 *.swo
 *.swn
 /tags
-
+/db_backups
+db.sqlite3

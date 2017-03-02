@@ -66,3 +66,6 @@ export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/davurclementsen/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1

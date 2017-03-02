@@ -1,13 +1,24 @@
 [user]
-	name = dsclementsen
-	email = davur@davur.net
+  name = dsclementsen
+  email = davur@davur.net
 [color]
-	ui = true
+  ui = true
 [core]
-	excludesfile = /Users/davurclementsen/.gitignore_global
+  excludesfile = /Users/davurclementsen/.gitignore_global
 [alias]
-	unstage = reset HEAD --
+  unstage = reset HEAD --
+  graph = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset)\t%C(bold green)%d%C(reset) %C(white)%s%C(reset) - %C(bold white)%an%C(reset) %C(bold yellow)(%ar)%C(reset)' --all
+  hist = log --pretty=format:\"%C(bold blue)%h%C(reset) %C(bold yellow)%ad%C(reset) | %s%C(bold green)%d%C(reset) %C(bold white)[%an]%C(reset)\" --graph --date=short
+  st = !git status
+  gr = !git graph
+  hi = !git hist
 [push]
-	default = simple
+  default = simple
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path = 
+[mergetool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
