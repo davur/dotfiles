@@ -10,17 +10,14 @@ export SVN_EDITOR=/usr/bin/vim
 set -o vi
 
 export HISTCONTROL=ignorespace:ignoredups
-export HISTSIZE=5000
-
-
+export HISTSIZE=10000
 
 ################################# Prompt ###################################### 
 
 # terminal settings (Cygwin inspired prompt)
 #   davur@macbook [~/Projects/dotfiles]
 #   10:14:23 $ |
-PS1="\[\e]0;\w\a\]\n\[\e[36m\]\u@\h [\[\e[37m\]\w\[\e[36m\]]\[\e[0m\]\n\t \$ "
-
+PS1="\[\e]0;\w\a\]\n\[\e[34m\]\u@\h [\[\e[37m\]\w\[\e[34m\]]\[\e[0m\]\n\t \$ "
 
 
 ############################### Shortcuts #####################################
@@ -30,6 +27,21 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias ll='ls -hal'
 
+alias please='sudo $(fc -ln -1)'
+alias prettyjson='python -m json.tool'
+alias vi='vim'
+
+# grep but include first N=1 header line(s)
+function greph {
+  if [[ $# -eq 0 ]]; then
+    echo "usage: greph pattern [header-line-count]"
+  elif [[ $# -eq 2 ]]; then
+    awk "NR<=$2 || /$1/"
+  else
+    awk "NR==1 || /$1/"
+  fi
+}
+
 # Trash instead of rm
 function rm() { echo "mv \"$@\" ~/.Trash/" && mv "$@" ~/.Trash/; }
 
@@ -37,8 +49,7 @@ function rm() { echo "mv \"$@\" ~/.Trash/" && mv "$@" ~/.Trash/; }
 function bu () { echo "cp -i \"$@\" \"$@~\"" && cp -i "$@" "$@~"; }
 function ubu () { echo "cp -i \"$@~\" $@\"" && cp -i "$@~" "$@"; }
 
-
-# Traversing shortcuts
+# Create and change to dir
 function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 
 # flip line endings
@@ -66,3 +77,10 @@ export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
+
+
+export AIRFLOW_HOME=/Users/davurclementsen/OneDrive/Innablr/repos/innablraf/airflow
+
+source ~/.bash/kubernetes
+source /Users/davurclementsen/OneDrive/repos/fzf/shell/completion.bash
+source /Users/davurclementsen/OneDrive/repos/fzf/shell/key-bindings.bash
