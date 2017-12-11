@@ -15,5 +15,8 @@ Installation
 ------------
 
 ```
-git clone https://github.com/dsclementsen/dotfiles.git ~/
+cd ~
+git init .
+git remote add origin https://github.com/dsclementsen/dotfiles.git
+git pull origin master
 ```
