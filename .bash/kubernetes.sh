@@ -2,33 +2,56 @@ red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
 
-source ~/.bash/kubernetes_env_switches
-# aliases for setting context in single terminal session
-# alias acmedev='alias acmedev; export KUBECONTEXT=acme-dev; export KUBENAMESPACE=dev'
-# alias acmeqat='alias acmeqat; export KUBECONTEXT=acme-qat; export KUBENAMESPACE=qat'
-alias kubeenv='alias kubeenv; echo $KUBECONTEXT; echo $KUBENAMESPACE'
+alias kubeenv='alias kubeenv; echo $KUBENAMESPACE; echo $KUBECONTEXT'
+
+# alias k='alias k; echo "$KUBECONTEXT $KUBENAMESPACE"; echo ""; kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE'
+
+function kenv() {
+  if [[ $# -eq 2 ]]; then
+    export KUBENAMESPACE=$1
+    export KUBECONTEXT=$2
+  elif [[ $# -eq 1 ]]; then
+    export KUBENAMESPACE=$1
+  fi
+  echo "KUBENAMESPACE=$KUBENAMESPACE"
+  echo "KUBECONTEXT=$KUBECONTEXT"
+}
+
+alias k='alias k; kubectl --context="$KUBECONTEXT" -n "$KUBENAMESPACE"'
+alias ka='alias ka; kubectl --context="$KUBECONTEXT" -n "$KUBENAMESPACE" --all-namespaces=true'
+
+
 
 # generic kubectl with current contect and namespace
-alias kctl='alias kctl; kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE'
 
+function kns() {
+  if [[ $# -eq 1 ]]; then
+    export KUBENAMESPACE=$1
+  else
+    echo "KUBENAMESPACE=$KUBENAMESPACE"
+  fi
+}
 
 function kbash() {
-  podid=$(kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE get pods | grep $1 | cut -d' ' -f1 | head -n 1)
-  kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE exec -ti $podid -- env COLUMNS=$COLUMNS LINES=$LINES TERM=$TERM /bin/bash
+  podid=$(kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE get pods -oname | cut -d/ -f2 | grep $1 |  head -n 1)
+  shift
+  kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE exec -ti $podid "$@" -- env COLUMNS=$COLUMNS LINES=$LINES TERM=$TERM /bin/bash
 }
 
 function klogs() {
-  podid=$(kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE get pods | grep $1 | cut -d' ' -f1 | head -n 1)
+  podid=$(kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE get pods -oname | cut -d/ -f2 | grep $1 |  head -n 1)
+  shift
   echo $podid
-  kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE logs $podid --tail=5000 | less
+  kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE logs $podid --tail=5000 "$@" | less
 }
 
 function klogall() {
-  podid=$(kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE get pods | grep $1 | cut -d' ' -f1 | head -n 1)
+  podid=$(kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE get pods -oname | cut -d/ -f2 | grep $1 |  head -n 1)
+  shift
   echo $podid
   logfile="$HOME/logs/`date +%Y%m%d-%H%M%S`-$podid.log"
   echo $logfile
-  kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE logs $podid > $logfile
+  kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE logs $podid "$@" > $logfile
   vi $logfile
 }
 
@@ -41,9 +64,10 @@ function logs() {
 
 
 function klogf() {
-  podid=$(kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE get pods | grep $1 | cut -d' ' -f1 | head -n 1)
+  podid=$(kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE get pods -oname | cut -d/ -f2 | grep $1 |  head -n 1)
+  shift
   echo $podid
-  kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE logs $podid --follow --tail=1
+  kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE logs $podid --follow --tail=1 "$@"
 }
 
 # function kget() {
@@ -60,33 +84,33 @@ function klogf() {
 
 function kget() {
   if [[ $# -eq 1 ]]; then
-	echo "${green}
+    echo "${green}
 Services: ${reset}"
     kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE get service -o wide | awk "NR==1 || /$1/"
 
-	echo "${green}
+    echo "${green}
 Deployments: ${reset}"
     kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE get deploy -o wide | awk "NR==1 || /$1/"
 
-	echo "${green}
+    echo "${green}
 Pods: ${reset}"
     kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE get pod -o wide | awk "NR==1 || /$1/"
 
-	echo "${green}
+    echo "${green}
 Configmaps: ${reset}"
     kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE get configmap -o wide | awk "NR==1 || /$1/"
 
-	echo "${green}
+    echo "${green}
 Persistant Volumes: ${reset}"
     kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE get pv -o wide | awk "NR==1 || /$1/"
 
-	echo "${green}
+    echo "${green}
 Persistant Volume Claims: ${reset}"
     kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE get pvc -o wide | awk "NR==1 || /$1/"
   elif [[ $# -eq 2 ]]; then
     kubectl --context=$KUBECONTEXT --namespace=$KUBENAMESPACE get $2 -o wide | awk "NR==1 || /$1/"
   else
-	echo "Usage: kget SEARCHTERM [RESOURCE]"
+    echo "Usage: kget SEARCHTERM [RESOURCE]"
   fi
 }
 

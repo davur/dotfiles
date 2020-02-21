@@ -1,24 +1,31 @@
 [user]
-  name = dsclementsen
-  email = davur@davur.net
+  name = Clementsen, Davur
+  email = clemend4@corptst.anz.com
 [color]
-  ui = true
+  diff = auto
+  ui = auto
 [core]
   excludesfile = /Users/davurclementsen/.gitignore_global
 [alias]
+  open = "!f(){ open `git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@'`| head -n1; }; f"
   unstage = reset HEAD --
   graph = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset)\t%C(bold green)%d%C(reset) %C(white)%s%C(reset) - %C(bold white)%an%C(reset) %C(bold yellow)(%ar)%C(reset)' --all
   hist = log --pretty=format:\"%C(bold blue)%h%C(reset) %C(bold yellow)%ad%C(reset) | %s%C(bold green)%d%C(reset) %C(bold white)[%an]%C(reset)\" --graph --date=short
   st = !git status
   gr = !git graph
   hi = !git hist
+  root = !git rev-parse --show-toplevel
 [push]
   default = simple
 [credential]
   helper = osxkeychain
 [difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path = 
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
 [mergetool "sourcetree"]
-  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[color "diff"]
+	whitespace = red reverse
+[http]
+	cookiefile = /Users/clemend4/.gitcookies
