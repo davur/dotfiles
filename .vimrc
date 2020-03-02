@@ -628,7 +628,7 @@ vmap < <gv
 vmap > >gv
 " imap <Esc> <Esc>l
 ".bash_login
-autocmd! bufwritepost * :!java -classpath ~ SaveLog ~/Notes/SaveLog-2013-11.txt '%:p'
+" autocmd! bufwritepost * :!java -classpath ~ SaveLog ~/Notes/SaveLog-2013-11.txt '%:p'
 "
 
     map     <C-S-F> <ESC>:cw<CR><C-w>k:Ack --html --python --php --js ""<LEFT>
