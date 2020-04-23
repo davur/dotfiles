@@ -1,66 +1,36 @@
-set nocompatible " be iMproved
-filetype off                   " required!
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" set rtp+=~/.vim/bundle/vundle/
-" call vundle#rc()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle
-" required! 
-" Bundle 'gmarik/vundle'
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-" " Files manager
-" Bundle 'L9'
-" Bundle 'FuzzyFinder'
-" Bundle 'vim-scripts/mru.vim'
-" Bundle 'vim-scripts/ack.vim'
-" Bundle 'scrooloose/nerdtree'
-" Bundle 'jistr/vim-nerdtree-tabs'
-" Bundle 'http://github.com/vim-scripts/Emmet.vim'
-" 
-" " Color scheme
-" Bundle 'cschlueter/vim-mustang'
-" 
-" " Universal Syntax Checker + Completion
-" Bundle 'scrooloose/syntastic'
-" 
-" " Python Syntax Checker
-" Bundle 'vim-scripts/Pydiction'
-" Bundle "vim-scripts/indentpython.vim"
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'editorconfig/editorconfig-vim'
 
-filetype plugin indent on     " required! 
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
-
-" INSTALLED PACKAGES
-" =========================================
-" Color scheme Mustang : http://hcalves.deviantart.com/art/Mustang-Vim-Colorscheme-98974484
-" Syntastic :https://github.com/scrooloose/syntastic
-" FuzzyFinder : http://www.vim.org/scripts/script.php?script_id=1984
-" L9 : http://www.vim.org/scripts/script.php?script_id=3252
-" Pyflakes : https://github.com/kevinw/pyflakes-vim
-" Pep8 : https://github.com/vim-scripts/pep8
-" NerdTree : https://github.com/scrooloose/nerdtree
-" NerdCommenter : https://github.com/scrooloose/nerdcommenter
-" Tagbar : https://github.com/majutsushi/tagbar
-" Sparkup : http://jetpackweb.com/blog/2010/03/04/write-html-faster-with-sparkup-vim-and-textmate/
-" UltiSnips : http://www.vim.org/scripts/script.php?script_id=2715, 
-"             http://fueledbylemons.com/blog/2011/07/27/why-ultisnips/
-" MRU    : https://github.com/vim-scripts/mru.vim
-" Tagbar : https://github.com/majutsushi/tagbar
-" NeoComplcache : https://github.com/Shougo/neocomplcache
-" IndentPython : https://github.com/vim-scripts/indentpython.vim
-" Fugitive : https://github.com/tpope/vim-fugitive
-
-" Key Shorcuts by Default
-" Leader                = ,
-" MRU                   = , + space
-" Pep8                  = F6
-" FileManager + Tagbar  = F8
-" FileManager           = , + t
-" FuzzFinder Files      = , + m
-" FuzzFinder Buffer     = , + b
-" File Explorer         = , + t
-" Tagbar                = , + l
-" 
+filetype plugin indent on     " required!
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -77,8 +47,9 @@ set autowrite
 " With a map leader it's possible to do extra key combinations
 " leader is press comma (,) key
 " like <leader>w saves the current file
-let mapleader=","
-let g:mapleader=","
+" let mapleader=" "
+" let g:mapleader=" "
+map <Space> <Leader>
 
 " Fast saving with leader + w
 nmap <leader>w :w<cr>
@@ -120,7 +91,7 @@ set backspace=eol,start,indent
 set whichwrap=h,l,~,[,]
 set whichwrap+=<,>,h,l
 
-set nolazyredraw "Don't redraw while executing macros 
+set nolazyredraw "Don't redraw while executing macros
 set magic "Set magic on, for regular expressions
 
 set showmatch "Show matching bracets when text indicator is over them
@@ -135,7 +106,7 @@ set tm=500
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable "Enable syntax hl
 syntax on
-au BufReadPost * if getfsize(bufname("%")) > 512*1024 | 
+au BufReadPost * if getfsize(bufname("%")) > 512*1024 |
 \ set syntax= |
 \ endif
 
@@ -146,7 +117,7 @@ set guioptions-=T
 set background=dark
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 colorscheme torte
-set gfn=Liberation\ Mono\ 10 
+set gfn=Liberation\ Mono\ 10
 
 set encoding=utf8
 try
@@ -160,7 +131,7 @@ endtry
 "   set lines=43
 "   set co=87
 " endif
-  
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -202,9 +173,9 @@ map <C-left> :bp<CR>
 map <C-Tab> :tabnext<cr>
 map <C-S-Tab> :tabprev<cr>
 map <leader>tn :tabnew! %<cr>
-map <leader>te :tabedit 
+map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
+map <leader>tm :tabmove
 
 " When pressing <leader>cd switch to the directory of the open buffer
 " map <leader>cd :cd %:p:h<cr>
@@ -212,7 +183,7 @@ set noautochdir
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" My CUSTOM 
+" My CUSTOM
 "
 " set cmdheight=1    cd %:p:h           " Explicitly set the height of the command line
 set number                    " Display line numbers
@@ -227,15 +198,14 @@ set colorcolumn=80 " Mark 80th column
 " autocmd FileType python highlight OverLength ctermbg=red ctermfg=white guibg=#FFD9D9
 " autocmd FileType python match OverLength /\%81v.\+/
 
-" Paste using ,v in normal mode
-nnoremap <leader>v "+gP
-
 " Set default environment based on current edited files
 " autocmd BufEnter * silent! lcd %:p:h
 
-" The best thing here! 
-" In insert mode, you can paste from clipboard using CTRL+v
-inoremap <C-v> <ESC>:set paste<CR>"+gp<ESC>:set nopaste<ENTER>i<RIGHT>
+" Use System clipboard for yank/put copy/paste etc
+set clipboard=unnamed
+" <leader>p to paste from yank register
+noremap <leader>p "0p
+nnoremap <leader>p "0gp
 
 " have command-line completion <tab> (for filenames, help topics, option names)
 " first list the available options and complete the longest common part, then
@@ -285,7 +255,7 @@ nnoremap E w:<CR>:!python % <CR>
 " Shortcut to Close quickfix window with leader+c
 nnoremap <leader>c <CR>:cclose<CR>
 
-" Set autocomplete form 
+" Set autocomplete form
 set completeopt=menuone,longest,preview
 
 "--- python formatting help ---
@@ -385,7 +355,7 @@ map <leader>b :FufBuffer<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MRU shorcuts
-map <leader><space> :MRU<CR> 
+map <leader><space> :MRU<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pyflakes configuration
@@ -394,7 +364,7 @@ if has("gui_running")
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Configure neocomplcache autocomplete 
+" Configure neocomplcache autocomplete
 " http://www.vim.org/scripts/script.php?script_id=2620
 
 highlight Pmenu gui=bold
@@ -494,7 +464,7 @@ endfunction
 " Minibuffer{{{
 """"""""""""""""""""""""""""""
 "Show the miniBufExplorer from the start
-" let g:miniBufExplorerMoreThanOne = 0 
+" let g:miniBufExplorerMoreThanOne = 0
 
 "Not using because I don't use the vertival window
 "Use a vertical windows
@@ -592,6 +562,8 @@ if has("autocmd")
 
  	autocmd FileType css			vnoremap <buffer> / :s/^/\/\* /<cr>gv:s/$/ \*\//<cr>gv
  	autocmd FileType css			vnoremap <buffer> ? :s/^\s*\/\*\s\?//<cr>gv:s/\s\?\*\/$//<cr>gvgv
+
+	autocmd FileType yaml set tabstop=4 softtabstop=4 shiftwidth=4
 endif
 
 abbreviate <?php= <?php echo
