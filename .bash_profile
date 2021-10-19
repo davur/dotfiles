@@ -149,3 +149,29 @@ setup_gcp() {
 export JAVA_HOME="$(/usr/libexec/java_home -v 13)"
 
 alias awsokta='alias awsokta; docker run -e OKTA_PROFILE=$AWS_PROFILE -it -v ~/.aws:/root/.aws -v ~/.okta:/root/.okta local/aws-okta-auth:latest'
+
+
+# From https://stackoverflow.com/a/52524114
+## export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
+## export JAVA_9_HOME=$(/usr/libexec/java_home -v9)
+## export JAVA_10_HOME=$(/usr/libexec/java_home -v10)
+## export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
+## export JAVA_12_HOME=$(/usr/libexec/java_home -v12)
+## export JAVA_13_HOME=$(/usr/libexec/java_home -v13)
+## export JAVA_14_HOME=$(/usr/libexec/java_home -v14)
+export JAVA_15_HOME=$(/usr/libexec/java_home -v15)
+
+## alias java8='export JAVA_HOME=$JAVA_8_HOME'
+## alias java9='export JAVA_HOME=$JAVA_9_HOME'
+## alias java10='export JAVA_HOME=$JAVA_10_HOME'
+## alias java11='export JAVA_HOME=$JAVA_11_HOME'
+## alias java12='export JAVA_HOME=$JAVA_12_HOME'
+## alias java13='export JAVA_HOME=$JAVA_13_HOME'
+## alias java14='export JAVA_HOME=$JAVA_14_HOME'
+alias java15='export JAVA_HOME=$JAVA_15_HOME'
+
+# default to Java 15
+java15
+
+
+export BASH_SILENCE_DEPRECATION_WARNING=1
