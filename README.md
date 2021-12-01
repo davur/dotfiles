@@ -28,3 +28,9 @@ This repo is intended to live in the user's root directory. A ignore-all `*`
 .gitignore file is added to reduce `git status` noise.
 
 So to track a new dotfile in this repo, use `git add --force FILENAME`.
+
+Stats
+-----
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=davur&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
+
