@@ -1,5 +1,5 @@
 [user]
-  name = dsclementsen
+  name = davur
   email = davur@davur.net
 [color]
   ui = true
@@ -23,3 +23,5 @@
 [mergetool "sourcetree"]
   cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
   trustExitCode = true
+[init]
+	defaultBranch = main

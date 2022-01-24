@@ -41,6 +41,9 @@ parse_git_branch() {
 ps1() {
   PS1="\[\e]0;\w\a\]\n\[\e[34m\]\u@\h [\[\e[37m\]\w\[\e[34m\]] \[\e[32m\]\$(parse_git_branch) \[\e[0m\]\n\t \$ "
 }
+ps2() {
+  PS1="\[\e]0;\w\a\]\n\[\e[34m\]\t [\[\e[37m\]\w\[\e[34m\]]\[\e[32m\]\[\e[0m\]\n\$ "
+}
 PS1="\n$ "
 
 

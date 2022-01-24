@@ -28,7 +28,7 @@ set scrolloff=7
 set hidden
 set noerrorbells
 set nowrap
-set cmdheight=2
+set cmdheight=1
 set termguicolors
 
 set splitright
