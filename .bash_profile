@@ -59,6 +59,8 @@ alias prettyjson='python -m json.tool'
 alias vi='vim'
 alias vif='TMPF=`fzf`; ls $TMPF && vim $TMPF'
 
+alias gitroot='cd "$(git rev-parse --show-toplevel)"; pwd;'
+
 # grep but include first N=1 header line(s)
 function greph {
   if [[ $# -eq 0 ]]; then
@@ -67,6 +69,17 @@ function greph {
     awk "NR<=$2 || /$1/"
   else
     awk "NR==1 || /$1/"
+  fi
+}
+
+# A recursive diff (diff -qr) reports file differences as:
+#   Files ./bla.txt and ../other/bla.txt differ
+# Use diffa to quckly diff the two files ignoring "Files" and "and"
+function diffa {
+  if [[ $# -ne 5  ]]; then
+    echo "usage: diffa Files ./bla.txt and ../other/bla.txt differ"
+  else
+    diff $2 $4
   fi
 }
 
