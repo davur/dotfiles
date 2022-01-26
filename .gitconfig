@@ -13,13 +13,15 @@
   st = !git status
   gr = !git graph
   hi = !git hist
+  gh = "!f(){ open `git remote -v | grep origin | head -n1 | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@'`| head -n1; }; f"
+  bb = "!f(){ open `git remote -v | grep origin | head -n1 | awk '/fetch/{print $2}' | sed -Ee 's#.*@#https://#' -e 's#(/[a-z]+/)#/projects\\1repos/#' -e 's#.git##'`| head -n1; }; f"
 [push]
   default = simple
 [credential]
   helper = osxkeychain
 [difftool "sourcetree"]
   cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path = 
+  path =
 [mergetool "sourcetree"]
   cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
   trustExitCode = true
