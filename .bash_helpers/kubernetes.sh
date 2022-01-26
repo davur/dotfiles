@@ -19,6 +19,7 @@ function kenv() {
 
 alias k='alias k; kubectl --context="$KUBECONTEXT" -n "$KUBENAMESPACE"'
 alias ka='alias ka; kubectl --context="$KUBECONTEXT" -n "$KUBENAMESPACE" --all-namespaces=true'
+alias stern='alias stern; stern --context="$KUBECONTEXT" -n "$KUBENAMESPACE"'
 
 
 
