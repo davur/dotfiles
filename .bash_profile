@@ -1,3 +1,5 @@
+USE_GKE_GCLOUD_AUTH_PLUGIN=False
+
 ############################## Bash settings ##################################
 export red=`tput setaf 1`
 export green=`tput setaf 2`
@@ -53,6 +55,7 @@ PS1="\n$ "
 alias mv='mv -i'
 alias cp='cp -i'
 alias ll='ls -hal'
+alias vi='alias vi; nvim'
 
 alias please='sudo $(fc -ln -1)'
 alias prettyjson='python -m json.tool'
@@ -118,8 +121,8 @@ alias dosh='alias dosh; docker run -ti --entrypoint /bin/bash -v $(pwd):/tmp'
 ############################### Tool settings #################################
 
 export PATH="$HOME/homebrew/bin:/usr/local/bin:$PATH"
+export PATH="/opt/homebrew/opt/openssl/bin:$PATH"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
 
 #export WORKON_HOME=$HOME/.virtualenvs
 #export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
@@ -163,7 +166,6 @@ setup_gcp() {
   if [ -f '/Users/clemend4/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/clemend4/google-cloud-sdk/completion.bash.inc'; fi
 }
 
-export JAVA_HOME="$(/usr/libexec/java_home -v 13)"
 
 alias awsokta='alias awsokta; docker run -e OKTA_PROFILE=$AWS_PROFILE -it -v ~/.aws:/root/.aws -v ~/.okta:/root/.okta local/aws-okta-auth:latest'
 
@@ -176,7 +178,8 @@ alias awsokta='alias awsokta; docker run -e OKTA_PROFILE=$AWS_PROFILE -it -v ~/.
 ## export JAVA_12_HOME=$(/usr/libexec/java_home -v12)
 ## export JAVA_13_HOME=$(/usr/libexec/java_home -v13)
 ## export JAVA_14_HOME=$(/usr/libexec/java_home -v14)
-export JAVA_15_HOME=$(/usr/libexec/java_home -v15)
+# export JAVA_15_HOME=$(/usr/libexec/java_home -v15)
+# export JAVA_HOME="$JAVA_15_HOME"
 
 ## alias java8='export JAVA_HOME=$JAVA_8_HOME'
 ## alias java9='export JAVA_HOME=$JAVA_9_HOME'
@@ -185,10 +188,11 @@ export JAVA_15_HOME=$(/usr/libexec/java_home -v15)
 ## alias java12='export JAVA_HOME=$JAVA_12_HOME'
 ## alias java13='export JAVA_HOME=$JAVA_13_HOME'
 ## alias java14='export JAVA_HOME=$JAVA_14_HOME'
-alias java15='export JAVA_HOME=$JAVA_15_HOME'
+# alias java15='export JAVA_HOME=$JAVA_15_HOME'
 
 # default to Java 15
-java15
+# java15
 
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"

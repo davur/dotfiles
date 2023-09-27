@@ -13,8 +13,8 @@
   st = !git status
   gr = !git graph
   hi = !git hist
-  gh = "!f(){ open `git remote -v | grep origin | head -n1 | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@'`| head -n1; }; f"
-  bb = "!f(){ open `git remote -v | grep origin | head -n1 | awk '/fetch/{print $2}' | sed -Ee 's#.*@#https://#' -e 's#(/[a-z]+/)#/projects\\1repos/#' -e 's#.git##'`| head -n1; }; f"
+  gh = "!f(){ open `git remote -v | awk '/origin\\t(.*)(fetch)/{print $2}' | sed -Ee 's#:#/#' -e 's#///#://#' -e 's#\\.git##' -e 's#.*@#https://#'`; }; f"
+  bb = "!f(){ open `git remote -v | grep origin | head -n1 | awk '/fetch/{print $2}' | sed -Ee 's#.*@#https://#' -e 's#(/[a-z]+/)#/projects\\1repos/#' -e 's#\\.git##'`| head -n1; }; f"
 [push]
   default = simple
 [credential]
@@ -26,4 +26,4 @@
   cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
   trustExitCode = true
 [init]
-	defaultBranch = main
+  defaultBranch = main

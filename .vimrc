@@ -420,8 +420,6 @@ let g:tagbar_usearrows=1
 let g:tagbar_width=30
 let g:tagbar_singleclick=1
 
-" Use leader + l to open Tagbar in Right side
-nnoremap <leader>l :TagbarToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""
 " NERDTree : https://github.com/scrooloose/nerdtree.git

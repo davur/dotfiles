@@ -1,9 +1,15 @@
+let mapleader = " "
+
 " Tabs and indents
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
+
+set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:█,extends:⟩,precedes:⟨,space:·
+"set showbreak=\ \ \ ↳
+nmap <leader>l :set invlist<cr>
 
 
 " Searching
@@ -40,7 +46,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'git@github.com:kien/ctrlp.vim.git'
 Plug 'gruvbox-community/gruvbox'
 Plug 'git@github.com:ycm-core/YouCompleteMe.git'
-Plug 'davur/vim-visualstudiodark'
+Plug 'rose-pine/neovim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
@@ -88,3 +94,6 @@ nnoremap <c-j> :m .+1<cr>==
 vnoremap <c-j> :m '>+1<cr>gv=gv
 vnoremap <c-k> :m '<-2<cr>gv=gv
 
+
+" Try `:highlight` without arguments to find a colour that suits you
+highlight NonText ctermfg=10 guifg=LightGreen
