@@ -126,6 +126,7 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 #source /usr/local/bin/virtualenvwrapper.sh
 #export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
+source ./.bash_helpers/workon.sh
 
 old_setup() {
   source ~/.bash/kubernetes.sh
