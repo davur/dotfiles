@@ -45,6 +45,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 set background=dark
+set clipboard+=unnamedplus
 " colorscheme visualstudiodark
 colorscheme gruvbox
 
@@ -86,3 +87,4 @@ nnoremap <c-k> :m .-2<cr>==
 nnoremap <c-j> :m .+1<cr>==
 vnoremap <c-j> :m '>+1<cr>gv=gv
 vnoremap <c-k> :m '<-2<cr>gv=gv
+
